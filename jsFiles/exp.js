@@ -136,7 +136,7 @@ const exp = (function() {
                         <td style="color:#911EB4">9<br><br>(x5)</td>
                     </tr>
                 </table>
-                <p>So, this description refers to a wheel with:</p>
+                <p>This description refers to a wheel with:</p>
                 <p>1 blue wedge worth 3 points</br>5 purple wedges worth 9 points</p>
                 <img src="./img/example1.png" style="width:40%; height:40%">
             </div>`,   
