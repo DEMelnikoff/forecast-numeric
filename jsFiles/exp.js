@@ -387,7 +387,7 @@ const exp = (function() {
 
             },
             choices: "NO_KEYS",
-            trial_duration: 2000,
+            trial_duration: 1500,
             data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
             on_finish: function(data) {
                 data.trial = trial;
