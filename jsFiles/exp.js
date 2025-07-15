@@ -124,6 +124,9 @@ const exp = (function() {
                         <td style="color:#911EB4">9<br><br>(x5)</td>
                     </tr>
                 </table>
+                <p>The upper numbers (3 and 9) are the values on the corresponding wheel.<br>
+                The lower numbers (x1 and x5) are the number of times each value appears.<br>
+                Each value appears in its corresponding color.</p>
             </div>`,   
 
             `<div class='parent'>
@@ -133,7 +136,7 @@ const exp = (function() {
                         <td style="color:#911EB4">9<br><br>(x5)</td>
                     </tr>
                 </table>
-                <p>This description refers to a wheel with:</p>
+                <p>So, this description refers to a wheel with:</p>
                 <p>1 blue wedge worth 3 points</br>5 purple wedges worth 9 points</p>
                 <img src="./img/example1.png" style="width:40%; height:40%">
             </div>`,   
@@ -378,9 +381,7 @@ const exp = (function() {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function() {
                 let standardFeedback;
-
                 standardFeedback = `<div class="score-board-blank"></div> <div class="feedback-area"> <div class="win-text" style="color:${vibrantColors[outcome-3]}">+${outcome} Points</div>`;
-
                 return standardFeedback;
 
             },
@@ -405,7 +406,7 @@ const exp = (function() {
                 return wheelStats;
             },
             questions: [
-                {prompt: `How <b>immersed</b> and <b>absorbed</b><br>would an average person feel spinning this wheel?`,
+                {prompt: `How <b>immersed</b> and <b>absorbed</b><br>would an average person feel spinning the corresponding wheel?`,
                 name: `flow`,
                 labels: ['0<br>A little', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10<br>Extremely']},
             ],
