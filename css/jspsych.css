@@ -590,7 +590,7 @@
 .pointDown::after {
   content: '';
   position: absolute;
-  top: 66px;
+  top: 70px;
   border: 35px solid transparent;
   border-top-color: white;
   border-bottom: none;
@@ -608,7 +608,7 @@
 .pointRight::after {
   content: '';
   position: absolute;
-  left: 66px;
+  left: 70px;
   border: 35px solid transparent;
   border-left-color: white;
   border-right: none;
