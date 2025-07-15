@@ -66,6 +66,11 @@ var jsPsychCanvasLikert = (function (jspsych) {
               pretty_name: "Button label",
               default: "Continue",
           },
+          reliability: {
+              type: jspsych.ParameterType.STRING,
+              pretty_name: "Reliability",
+              default: "Continue",
+          },
           /** Setting this to true will enable browser auto-complete or auto-fill for the form. */
           autocomplete: {
               type: jspsych.ParameterType.BOOL,
@@ -111,10 +116,13 @@ var jsPsychCanvasLikert = (function (jspsych) {
           if (trial.preamble == null) {
               html += 
 
+              `<div style="margin-bottom: 20px; font-size:30px">
+                <strong>${trial.reliability}</strong> chance of standard outcome
+              </div>` +
               '<div id="jspsych-canvas-button-response-stimulus">' +
                 '<canvas id="jspsych-canvas-stimulus" height="500" width="500"></canvas>' +
-                '<div id="spin"></div>' +
-              "</div>"
+                '<div id="spinUp"></div>' +
+              "</div>" 
                 /*
                   '<div id="jspsych-survey-likert-preamble" class="jspsych-survey-likert-preamble">' +
                       trial.preamble +

@@ -9,7 +9,7 @@ const exp = (function() {
 
     // const playOrPredict = ["play", "predict"][0]; 
 
-    const nTrials = 5;
+    const nTrials = 50;
 
     jsPsych.data.addProperties({
         playOrPredict: playOrPredict,
@@ -26,32 +26,81 @@ const exp = (function() {
         intro_play: [
             `<div class='parent'>
                 <p><strong>Welcome to Feel the Spin!</strong></p>
-                <p>In Feel the Spin, you'll spin a series of prize wheels.</p>
-                <p>With each spin, you'll earn points.</p>
-                <p>Your goal is to earn as many points as possible!</p>
+                <p>In Feel the Spin, you'll compete for a chance to win a <b>$100.00 bonus</b>.
+                Specifically, you'll earn tokens. Your tokens will be entered into a lottery, and if one of your tokens is drawn, you'll win $100.00.</p>
+                <p>The more tokens you earn, the greater your chances of winning $100.00.</p>
             </div>`,
 
             `<div class='parent'>
-                <p>Each wheel has six wedges, like this:</p>
-                <img src="./img/pre-pic.png" style="width:50%; height:50%">
+                <p>You'll earn tokens by spinning prize wheels.</p>
+                <p>Each wheel is divided into 6 wedges, like this:</p>
+                <img src="./img/arrow-up.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
-                <p>When a wheel stops spinning, the wedge it lands on will activate.</p>
+                <p>When a wheel stops spinning, one of the wedges will activate.</p>
                 <p>The activated wedge will turn black, like this:</p>
-                <img src="./img/post-pic.png" style="width:50%; height:50%">
+                <img src="./img/standard-outcome.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
-                <p>The number on the activated wedge is added to your score.</p>
-                <p>For example, in this scenario, you'd receive 8 points.</p>
-                <img src="./img/post-pic.png" style="width:50%; height:50%">
+                <p>The number on the activated wedge determines your earnings.</p>
+                <p>In this example, you'd gain 3 tokens.</p>
+                <img src="./img/standard-outcome.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
-                <p>After each spin, you'll see how many points you earned.</p>
+                <p>After each spin, you'll see how many tokens you earned.</p>
                 <p>Specifically, you'll see a message like this:</p>
-                <div class="win-text-inst" style="color:grey; margin-bottom: 100px">+8 Points</div>
+                <div class="win-text-inst" style="color:#3CB44B; margin-bottom: 100px">+3 Tokens</div>
+            </div>`,
+
+            `<div class='parent'>
+                <p>Typically, the wedge that lands on the arrow will activate.</p>
+                <p>This is called a "standard outcome."</p>
+                <p>Below is an example of a standard outcome.</p>
+                <img src="./img/standard-outcome.png" style="width:50%; height:50%">
+            </div>`,
+
+            `<div class='parent'>
+                <p>Occasionally, a random wedge will activate instead.</p>
+                <p>This is called a "random outcome."</p>
+                <p>Here's an example of a random outcome:</p>
+                <img src="./img/random-outcome.png" style="width:50%; height:50%">
+            </div>`,
+
+            `<div class='parent'>
+                <p>The chance of a standard outcome changes from wheel to wheel.</p>
+            </div>`,
+
+            `<div class='parent'>
+                <p>The chance of a standard outcome is displayed before each wheel.</p>
+                <p>For example, this message means that the next wheel has a 75% chance of a standard outcome and a 25% chance of a random outcome.</p>
+                <img src="./img/outcome-75.png" style="width:70%; height:70%">      
+            </div>`,
+
+            `<div class='parent'>
+                <p>After each spin, the arrow at the center of the wheel will change directions.</p>
+            </div>`,
+
+            `<div class='parent'>
+                <p>Sometimes the arrow will point up:</p>
+                <img src="./img/arrow-up.png" style="width:50%; height:50%">      
+            </div>`,
+
+            `<div class='parent'>
+                <p>Sometimes the arrow will point right:</p>
+                <img src="./img/arrow-right.png" style="width:50%; height:50%">      
+            </div>`,
+
+            `<div class='parent'>
+                <p>Sometimes the arrow will point down:</p>
+                <img src="./img/arrow-down.png" style="width:50%; height:50%">      
+            </div>`,
+
+            `<div class='parent'>
+                <p>Sometimes the arrow will point left:</p>
+                <img src="./img/arrow-left.png" style="width:50%; height:50%">      
             </div>`,
 
             `<div class='parent'>
@@ -70,32 +119,81 @@ const exp = (function() {
         intro_predict: [
             `<div class='parent'>
                 <p><strong>Welcome to Feel the Spin!</strong></p>
-                <p>In Feel the Spin, players spin a series of prize wheels.</p>
-                <p>With each spin, players earn points.</p>
-                <p>The goal is to earn as many points as possible!</p>
+                <p>In Feel the Spin, players compete for a chance to win a <b>$100.00 bonus</b>.
+                Specifically, players earn tokens. Their tokens are entered into a lottery, and the player whose token is drawn wins $100.00.</p>
+                <p>The more tokens a player earns, the greater their chances of winning $100.00.</p>
             </div>`,
 
             `<div class='parent'>
-                <p>Each wheel has six wedges, like this:</p>
-                <img src="./img/pre-pic.png" style="width:50%; height:50%">
+                <p>Players earn tokens by spinning prize wheels.</p>
+                <p>Each wheel is divided into 6 wedges, like this:</p>
+                <img src="./img/arrow-up.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
-                <p>When a wheel stops spinning, the wedge it lands on will activate.</p>
+                <p>When a wheel stops spinning, one of the wedges will activate.</p>
                 <p>The activated wedge will turn black, like this:</p>
-                <img src="./img/post-pic.png" style="width:50%; height:50%">
+                <img src="./img/standard-outcome.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
-                <p>The number on the activated wedge is added to the player's score.</p>
-                <p>For example, in this scenario, the player would receive 8 points.</p>
-                <img src="./img/post-pic.png" style="width:50%; height:50%">
+                <p>The number on the activated wedge determines the player's earnings.</p>
+                <p>In this example, the player earned 3 tokens.</p>
+                <img src="./img/standard-outcome.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
-                <p>After each spin, the player sees how many points they earned.</p>
+                <p>Typically, the wedge that lands on the arrow will activate.</p>
+                <p>This is called a "standard outcome."</p>
+                <p>Below is an example of a standard outcome.</p>
+                <img src="./img/standard-outcome.png" style="width:50%; height:50%">
+            </div>`,
+
+            `<div class='parent'>
+                <p>After each spin, the player sees how many tokens they earned.</p>
                 <p>Specifically, they see a message like this:</p>
-                <div class="win-text-inst" style="color:grey; margin-bottom: 100px">+8 Points</div>
+                <div class="win-text-inst" style="color:#3CB44B; margin-bottom: 100px">+3 Tokens</div>
+            </div>`,
+
+            `<div class='parent'>
+                <p>Occasionally, a random wedge will activate instead.</p>
+                <p>This is called a "random outcome."</p>
+                <p>Here's an example of a random outcome:</p>
+                <img src="./img/random-outcome.png" style="width:50%; height:50%">
+            </div>`,
+
+            `<div class='parent'>
+                <p>The chance of a standard outcome changes from wheel to wheel.</p>
+            </div>`,
+
+            `<div class='parent'>
+                <p>The chance of a standard outcome is displayed before each wheel.</p>
+                <p>For example, this message means that the next wheel has a 75% chance of a standard outcome and a 25% chance of a random outcome.</p>
+                <img src="./img/outcome-75.png" style="width:70%; height:70%">      
+            </div>`,
+
+            `<div class='parent'>
+                <p>After each spin, the arrow at the center of the wheel will change directions.</p>
+            </div>`,
+
+            `<div class='parent'>
+                <p>Sometimes the arrow will point up:</p>
+                <img src="./img/arrow-up.png" style="width:50%; height:50%">      
+            </div>`,
+
+            `<div class='parent'>
+                <p>Sometimes the arrow will point right:</p>
+                <img src="./img/arrow-right.png" style="width:50%; height:50%">      
+            </div>`,
+
+            `<div class='parent'>
+                <p>Sometimes the arrow will point down:</p>
+                <img src="./img/arrow-down.png" style="width:50%; height:50%">      
+            </div>`,
+
+            `<div class='parent'>
+                <p>Sometimes the arrow will point left:</p>
+                <img src="./img/arrow-left.png" style="width:50%; height:50%">      
             </div>`,
 
             `<div class='parent'>
@@ -114,55 +212,10 @@ const exp = (function() {
                 <p>Your goal in Feel the Spin is to guess how <b>immersed</b> and <b>absorbed</b> an average person would feel while spinning different wheels.</p>
                 <p>You'll see descriptions of different wheels. For each description, your job is to guess how <b>immersed</b> and <b>absorbed</b> an average person would feel while spinning the corresponding wheel.</p>
                 <p>Simply provide your best guess about the typical experience.</p>
-            </div>`,   
-
-            `<div class='parent'>
-                <p>Each description looks like this:</p>
-                <table class="stats-table">
-                    <tr>
-                        <td style="color:#4363D8">3<br><br>(x1)</td>
-                        <td style="color:#911EB4">9<br><br>(x5)</td>
-                    </tr>
-                </table>
-                <p>The top numbers (3 and 9) are the values on the corresponding wheel.<br>
-                The bottom numbers (1 and 5) are the number of times each value appears.<br>
-                Each value appears in its corresponding color.</p>
-            </div>`,   
-
-            `<div class='parent'>
-                <table class="stats-table">
-                    <tr>
-                        <td style="color:#4363D8">3<br><br>(x1)</td>
-                        <td style="color:#911EB4">9<br><br>(x5)</td>
-                    </tr>
-                </table>
-                <p>This description refers to a wheel with:</p>
-                <p>1 blue wedge worth 3 points</br>5 purple wedges worth 9 points</p>
-                <img src="./img/example1.png" style="width:40%; height:40%">
-            </div>`,   
-
-            `<div class='parent'>
-                <table class="stats-table">
-                    <tr>
-                        <td style="color:#E6194B">3<br><br>(x3)</td>
-                        <td style="color:#F58231">5<br><br>(x1)</td>
-                        <td style="color:#3CB44B">7<br><br>(x1)</td>
-                        <td style="color:#4363D8">9<br><br>(x1)</td>
-                    </tr>
-                </table>
-                <p>This description refers to a wheel with:</p> 
-                <p>3 red wedges worth 3 points<br>1 orange wedge with 5 points<br>1 green wedge worth 7 points<br>1 blue wedge worth 9 points</p>
-                <img src="./img/example2.png" style="width:40%; height:40%">
-            </div>`,
-
-            `<div class='parent'>
-                <p>REMEMBER: For each description, your job is to guess how <b>immersed</b> and <b>absorbed</b> an average person would feel while spinning the corresponding wheel.</p>
-                <p>Simply provide your best guess about the typical experience.</p>
-            </div>`,  
+            </div>`
         ],
 
         postIntro: [   
-
             `<div class='parent'>
                 <p>You're ready to begin Feel the Spin!</p>
                 <p>Continue to the next screen to begin.</p>
@@ -290,68 +343,75 @@ const exp = (function() {
       Object.keys(wedges).forEach((key, idx) => { wedges[key].color = vibrantColors[idx] });
       return wedges;
     };
-    
+
     randomizeWedgeColors();
 
-    const buildStatsTable = (nums, probs, wedges) => {
-      const colors = Object.values(wedges).map(w => w.color);
-
-      // Build the <td> cells
-      const tds = nums.map((num, i) => `<td style="color:${colors[i]}">${num}<br><br>(x${probs[i]})</td>`).join("");
-
-      // Wrap everything in <table> … </table>
-      return `
-        <table class="stats-table">
-          <tr>${tds}</tr>
-        </table>`;
+    function pointsToWedges(nums) {
+      const word = {
+        3: "three",
+        4: "four",
+        5: "five",
+        6: "six",
+        7: "seven",
+        8: "eight",
+        9: "nine",
+      };
+      return nums.map(p => {
+        const key = word[p];
+        return wedges[key];
+      });
     };
 
     // define each wheel
     let target_wheels = [
 
-        {sectors: [ wedges.three, wedges.nine, wedges.nine, wedges.nine, wedges.nine, wedges.nine ],     wheel_id: 1, reliability: 1, nums: [3, 9], probs: [1, 5], label: "100%", ev: 8, mi: .65},
-        {sectors: [ wedges.three, wedges.three, wedges.three, wedges.three, wedges.three, wedges.nine ], wheel_id: 2, reliability: 1, nums: [3, 9], probs: [5, 1], label: "100%", ev: 4, mi: .65},
+        {values: [ 3, 9, 9, 9, 9, 9 ], wheel_id: 1,  ev: 8,    hE: .65},
+        {values: [ 3, 3, 3, 3, 3, 9 ], wheel_id: 2,  ev: 4,    hE: .65},
 
-        {sectors: [ wedges.three, wedges.three, wedges.nine, wedges.nine, wedges.nine, wedges.nine ],    wheel_id: 3, reliability: 1, nums: [3, 9], probs: [2, 4], label: "100%", ev: 7, mi: .92},
-        {sectors: [ wedges.three, wedges.three, wedges.three, wedges.three, wedges.nine, wedges.nine ],  wheel_id: 4, reliability: 1, nums: [3, 9], probs: [4, 2], label: "100%", ev: 5, mi: .92},
+        {values: [ 3, 3, 9, 9, 9, 9 ], wheel_id: 3,  ev: 7,    hE: .92},
+        {values: [ 3, 3, 3, 3, 9, 9 ], wheel_id: 4,  ev: 5,    hE: .92},
 
-        {sectors: [ wedges.three, wedges.three, wedges.three, wedges.nine, wedges.nine, wedges.nine ],   wheel_id: 5, reliability: 1, nums: [3, 9], probs: [3, 3], label: "100%", ev: 6, mi: 1},
+        {values: [ 3, 3, 3, 9, 9, 9 ], wheel_id: 5,  ev: 6,    hE: 1},
 
-        {sectors: [ wedges.three, wedges.three, wedges.three, wedges.three, wedges.six, wedges.nine ],   wheel_id: 6, reliability: 1, nums: [3, 6, 9], probs: [4, 1, 1], label: "100%", ev: 6, mi: 1.25},
-        {sectors: [ wedges.three, wedges.six, wedges.six, wedges.six, wedges.six, wedges.nine ],         wheel_id: 7, reliability: 1, nums: [3, 6, 9], probs: [1, 4, 1], label: "100%", ev: 4.5, mi: 1.25},
-        {sectors: [ wedges.three, wedges.six, wedges.nine, wedges.nine, wedges.nine, wedges.nine ],      wheel_id: 8, reliability: 1, nums: [3, 6, 9], probs: [1, 1, 4], label: "100%", ev: 7.5, mi: 1.25},
+        {values: [ 3, 3, 3, 3, 6, 9 ], wheel_id: 6,  ev: 6,    hE: 1.25},
+        {values: [ 3, 6, 6, 6, 6, 9 ], wheel_id: 7,  ev: 4.5,  hE: 1.25},
+        {values: [ 3, 6, 9, 9, 9, 9 ], wheel_id: 8,  ev: 7.5,  hE: 1.25},
 
-        {sectors: [ wedges.three, wedges.three, wedges.three, wedges.six, wedges.six, wedges.nine ],     wheel_id: 9, reliability: 1, nums: [3, 6, 9], probs: [3, 2, 1], label: "100%", ev: 5, mi: 1.46},
-        {sectors: [ wedges.three, wedges.three, wedges.three, wedges.six, wedges.nine, wedges.nine ],    wheel_id: 10, reliability: 1, nums: [3, 6, 9], probs: [3, 1, 2], label: "100%", ev: 5.5, mi: 1.46},
-        {sectors: [ wedges.three, wedges.six, wedges.six, wedges.six, wedges.nine, wedges.nine ],        wheel_id: 11, reliability: 1, nums: [3, 6, 9], probs: [1, 3, 2], label: "100%", ev: 6.5, mi: 1.46},
-        {sectors: [ wedges.three, wedges.three, wedges.six, wedges.six, wedges.six, wedges.nine ],       wheel_id: 12, reliability: 1, nums: [3, 6, 9], probs: [2, 3, 1], label: "100%", ev: 5.5, mi: 1.46},
-        {sectors: [ wedges.three, wedges.six, wedges.six, wedges.nine, wedges.nine, wedges.nine ],       wheel_id: 13, reliability: 1, nums: [3, 6, 9], probs: [1, 2, 3], label: "100%", ev: 7, mi: 1.46},
-        {sectors: [ wedges.three, wedges.three, wedges.six, wedges.nine, wedges.nine, wedges.nine ],     wheel_id: 14, reliability: 1, nums: [3, 6, 9], probs: [2, 1, 3], label: "100%", ev: 6.5, mi: 1.46},
+        {values: [ 3, 3, 3, 6, 6, 9 ], wheel_id: 9,  ev: 5,    hE: 1.46},
+        {values: [ 3, 3, 3, 6, 9, 9 ], wheel_id: 10, ev: 5.5,  hE: 1.46},
+        {values: [ 3, 6, 6, 6, 9, 9 ], wheel_id: 11, ev: 6.5,  hE: 1.46},
+        {values: [ 3, 3, 6, 6, 6, 9 ], wheel_id: 12, ev: 5.5,  hE: 1.46},
+        {values: [ 3, 6, 6, 9, 9, 9 ], wheel_id: 13, ev: 7,    hE: 1.46},
+        {values: [ 3, 3, 6, 9, 9, 9 ], wheel_id: 14, ev: 6.5,  hE: 1.46},
 
-        {sectors: [ wedges.three, wedges.three, wedges.six, wedges.six, wedges.nine, wedges.nine ],      wheel_id: 15, reliability: 1, nums: [3, 6, 9], probs: [2, 2, 2], label: "100%", ev: 6, mi: 1.58},
+        {values: [ 3, 3, 6, 6, 9, 9 ], wheel_id: 15, ev: 6,    hE: 1.58},
 
-        {sectors: [ wedges.three, wedges.three, wedges.three, wedges.five, wedges.seven, wedges.nine ],  wheel_id: 16, reliability: 1, nums: [3, 5, 7, 9], probs: [3, 1, 1, 1], label: "100%", ev: 5, mi: 1.79},
-        {sectors: [ wedges.three, wedges.five, wedges.five, wedges.five, wedges.seven, wedges.nine ],    wheel_id: 17, reliability: 1, nums: [3, 5, 7, 9], probs: [1, 3, 1, 1], label: "100%", ev: 5.67, mi: 1.79},
-        {sectors: [ wedges.three, wedges.five, wedges.seven, wedges.seven, wedges.seven, wedges.nine ],  wheel_id: 18, reliability: 1, nums: [3, 5, 7, 9], probs: [1, 1, 3, 1], label: "100%", ev: 6.33, mi: 1.79},
-        {sectors: [ wedges.three, wedges.five, wedges.seven, wedges.nine, wedges.nine, wedges.nine ],    wheel_id: 19, reliability: 1, nums: [3, 5, 7, 9], probs: [1, 1, 1, 3], label: "100%", ev: 7, mi: 1.79},
+        {values: [ 3, 3, 3, 5, 7, 9 ], wheel_id: 16, ev: 5,    hE: 1.79},
+        {values: [ 3, 5, 5, 5, 7, 9 ], wheel_id: 17, ev: 5.67, hE: 1.79},
+        {values: [ 3, 5, 7, 7, 7, 9 ], wheel_id: 18, ev: 6.33, hE: 1.79},
+        {values: [ 3, 5, 7, 9, 9, 9 ], wheel_id: 19, ev: 7,    hE: 1.79},
 
-        {sectors: [ wedges.three, wedges.three, wedges.five, wedges.five, wedges.seven, wedges.nine ],   wheel_id: 20, reliability: 1, nums: [3, 5, 7, 9], probs: [2, 2, 1, 1], label: "100%", ev: 5.33, mi: 1.92},
-        {sectors: [ wedges.three, wedges.three, wedges.five, wedges.seven, wedges.seven, wedges.nine ],  wheel_id: 21, reliability: 1, nums: [3, 5, 7, 9], probs: [2, 1, 2, 1], label: "100%", ev: 5.67, mi: 1.92},
-        {sectors: [ wedges.three, wedges.three, wedges.five, wedges.seven, wedges.nine, wedges.nine ],   wheel_id: 22, reliability: 1, nums: [3, 5, 7, 9], probs: [2, 1, 1, 2], label: "100%", ev: 6, mi: 1.92},
-        {sectors: [ wedges.three, wedges.five, wedges.five, wedges.seven, wedges.seven, wedges.nine ],   wheel_id: 23, reliability: 1, nums: [3, 5, 7, 9], probs: [1, 2, 2, 1], label: "100%", ev: 6, mi: 1.92},
-        {sectors: [ wedges.three, wedges.five, wedges.five, wedges.seven, wedges.nine, wedges.nine ],    wheel_id: 24, reliability: 1, nums: [3, 5, 7, 9], probs: [1, 2, 1, 2], label: "100%", ev: 6.33, mi: 1.92},
-        {sectors: [ wedges.three, wedges.five, wedges.seven, wedges.seven, wedges.nine, wedges.nine ],   wheel_id: 25, reliability: 1, nums: [3, 5, 7, 9], probs: [1, 1, 2, 2], label: "100%", ev: 6.67, mi: 1.92},
+        {values: [ 3, 3, 5, 5, 7, 9 ], wheel_id: 20, ev: 5.33, hE: 1.92},
+        {values: [ 3, 3, 5, 7, 7, 9 ], wheel_id: 21, ev: 5.67, hE: 1.92},
+        {values: [ 3, 3, 5, 7, 9, 9 ], wheel_id: 22, ev: 6,    hE: 1.92},
+        {values: [ 3, 5, 5, 7, 7, 9 ], wheel_id: 23, ev: 6,    hE: 1.92},
+        {values: [ 3, 5, 5, 7, 9, 9 ], wheel_id: 24, ev: 6.33, hE: 1.92},
+        {values: [ 3, 5, 7, 7, 9, 9 ], wheel_id: 25, ev: 6.67, hE: 1.92},
 
-        {sectors: [ wedges.three, wedges.three, wedges.four, wedges.six, wedges.eight, wedges.nine ],    wheel_id: 26, reliability: 1, nums: [3, 4, 6, 8, 9], probs: [2, 1, 1, 1, 1], label: "100%", ev: 5.5, mi: 2.25},
-        {sectors: [ wedges.three, wedges.four, wedges.four, wedges.six, wedges.eight, wedges.nine ],     wheel_id: 27, reliability: 1, nums: [3, 4, 6, 8, 9], probs: [1, 2, 1, 1, 1], label: "100%", ev: 5.67, mi: 2.25},
-        {sectors: [ wedges.three, wedges.four, wedges.six, wedges.six, wedges.eight, wedges.nine ],      wheel_id: 28, reliability: 1, nums: [3, 4, 6, 8, 9], probs: [1, 1, 2, 1, 1], label: "100%", ev: 6, mi: 2.25},
-        {sectors: [ wedges.three, wedges.four, wedges.six, wedges.eight, wedges.eight, wedges.nine ],    wheel_id: 29, reliability: 1, nums: [3, 4, 6, 8, 9], probs: [1, 1, 1, 2, 1], label: "100%", ev: 6.33, mi: 2.25},
-        {sectors: [ wedges.three, wedges.four, wedges.six, wedges.eight, wedges.nine, wedges.nine ],     wheel_id: 30, reliability: 1, nums: [3, 4, 6, 8, 9], probs: [1, 1, 1, 1, 2], label: "100%", ev: 6.5, mi: 2.25},
+        {values: [ 3, 3, 4, 6, 8, 9 ], wheel_id: 26, ev: 5.5,  hE: 2.25},
+        {values: [ 3, 4, 4, 6, 8, 9 ], wheel_id: 27, ev: 5.67, hE: 2.25},
+        {values: [ 3, 4, 6, 6, 8, 9 ], wheel_id: 28, ev: 6,    hE: 2.25},
+        {values: [ 3, 4, 6, 8, 8, 9 ], wheel_id: 29, ev: 6.33, hE: 2.25},
+        {values: [ 3, 4, 6, 8, 9, 9 ], wheel_id: 30, ev: 6.5,  hE: 2.25},
 
-        {sectors: [ wedges.three, wedges.four, wedges.five, wedges.six, wedges.seven, wedges.nine ],     wheel_id: 31, reliability: 1, nums: [3, 4, 5, 6, 7, 9], probs: [1, 1, 1, 1, 1, 1], label: "100%", ev: 5.67, mi: 3},
-        {sectors: [ wedges.three, wedges.five, wedges.six, wedges.seven, wedges.eight, wedges.nine ],    wheel_id: 32, reliability: 1, nums: [3, 5, 6, 7, 8, 9], probs: [1, 1, 1, 1, 1, 1], label: "100%", ev: 6.33, mi: 3},
-
+        {values: [ 3, 4, 5, 6, 7, 9 ], wheel_id: 31, ev: 5.67, hE: 3},
+        {values: [ 3, 5, 6, 7, 8, 9 ], wheel_id: 32, ev: 6.33, hE: 3},
     ];
+
+    let reliability_idxs = jsPsych.randomization.repeat([0, 0, 0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3], 1);
+    let reliability_idx;
+    const reliability = [.25, .5, .75, 1];
+    const reliability_label = ["25%", "50%", "75%", "100%"];
 
     const MakeSpinLoop = function(play) {
 
@@ -359,22 +419,48 @@ const exp = (function() {
         let trial = 1;
         let round = 1;
 
+        const preSpin = {
+            type: jsPsychHtmlKeyboardResponse,
+            stimulus: function() {
+                reliability_idx = reliability_idxs[round-1];
+                let pct = reliability_label[reliability_idx];
+                let html = `<div class='pFlip-style'>
+                                <p><span style='font-size:100px'><strong>${pct}</strong></span>
+                                <br><br><br>chance of standard outcome</p>
+                            </div>`;
+                return html;
+            },
+            choices: "NO_KEYS",
+            trial_duration: 5000,
+            response_ends_trial: false,
+            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), values: jsPsych.timelineVariable('values'), ev: jsPsych.timelineVariable('ev'), hE: jsPsych.timelineVariable('hE')},
+            on_finish: function(data) {
+                data.trial = trial;
+                data.round = round;
+                data.reliability_idx = reliability_idx;
+                data.reliability = reliability[reliability_idx];
+            }
+        };
+
         // trial: spinner
         const spin = {
             type: jsPsychCanvasButtonResponse,
             stimulus: function(c, spinnerData) {
-                console.log(jsPsych.timelineVariable('nums'), jsPsych.timelineVariable('probs'), jsPsych.timelineVariable('ev'), jsPsych.timelineVariable('mi'))
-                createSpinner(c, spinnerData, jsPsych.timelineVariable('sectors'), false, true);
+                let sectors = pointsToWedges(jsPsych.timelineVariable('values'))
+                let reliability_idx = reliability_idxs[round-1];
+                createSpinner(c, spinnerData, sectors, reliability[reliability_idx], true);
             },
             canvas_size: [500, 500],
             scoreBoard: function() {
                 return '';
             },
-            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
+            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), values: jsPsych.timelineVariable('values'), ev: jsPsych.timelineVariable('ev'), hE: jsPsych.timelineVariable('hE')},
             on_finish: function(data) {
                 data.trial = trial;
                 data.round = round;
-                outcome = data.outcome;
+                outcome = data.outcomes_points[0];
+                data.reliability_idx = reliability_idx;
+                data.reliability = reliability[reliability_idx];
             }
         };
 
@@ -382,17 +468,19 @@ const exp = (function() {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function() {
                 let standardFeedback;
-                standardFeedback = `<div class="score-board-blank"></div> <div class="feedback-area"> <div class="win-text" style="color:${vibrantColors[outcome-3]}">+${outcome} Points</div>`;
+                standardFeedback = `<div class="score-board-blank"></div> <div class="feedback-area"> <div class="win-text" style="color:${vibrantColors[outcome-3]}">+${outcome} Tokens</div>`;
                 return standardFeedback;
 
             },
             choices: "NO_KEYS",
             trial_duration: 1500,
-            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
+            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), values: jsPsych.timelineVariable('values'), ev: jsPsych.timelineVariable('ev'), hE: jsPsych.timelineVariable('hE')},
             on_finish: function(data) {
                 data.trial = trial;
                 data.round = round;
                 trial++;
+                data.reliability_idx = reliability_idx;
+                data.reliability = reliability[reliability_idx];
             },
         };
 
@@ -402,22 +490,30 @@ const exp = (function() {
         };
 
         const flowMeasure_predict = {
-            type: jsPsychSurveyLikert,
-            preamble: () => {
-                let wheelStats = buildStatsTable(jsPsych.timelineVariable('nums'), jsPsych.timelineVariable('probs'), wedges)
-                return wheelStats;
+            type: jsPsychCanvasLikert,
+            stimulus: function(c, spinnerData) {
+                let sectors = pointsToWedges(jsPsych.timelineVariable('values'))
+                let reliability_idx = reliability_idxs[round-1];
+                createSpinner(c, spinnerData, sectors, reliability[reliability_idx], false);
+            },
+            reliability: () => {
+                let reliability_idx = reliability_idxs[round-1];
+                let pct = reliability_label[reliability_idx];
+                return pct;
             },
             questions: [
-                {prompt: `How <b>immersed</b> and <b>absorbed</b><br>would an average person feel spinning the corresponding wheel?`,
+                {prompt: `How <b>immersed</b> and <b>absorbed</b><br>would an average person feel spinning this wheel?`,
                 name: `flow`,
                 labels: ['0<br>A little', '1', '2', '3', '4', '5', '6', '7', '8', '9', '10<br>Extremely']},
             ],
             randomize_question_order: false,
             scale_width: 600,
-            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
+            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), values: jsPsych.timelineVariable('values'), ev: jsPsych.timelineVariable('ev'), hE: jsPsych.timelineVariable('hE')},
              on_finish: function(data) {
                 data.trial = trial;
                 data.round = round;
+                data.reliability_idx = reliability_idx;
+                data.reliability = reliability[reliability_idx];
                 trial++;
                 round++;
                 saveSurveyData(data);
@@ -434,10 +530,12 @@ const exp = (function() {
             ],
             randomize_question_order: false,
             scale_width: 600,
-            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
+            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), values: jsPsych.timelineVariable('values'), ev: jsPsych.timelineVariable('ev'), hE: jsPsych.timelineVariable('hE')},
              on_finish: function(data) {
                 data.trial = trial - 1;
                 data.round = round;
+                data.reliability_idx = reliability_idx;
+                data.reliability = reliability[reliability_idx];
                 round++;
                 saveSurveyData(data);
                 randomizeWedgeColors();
@@ -446,7 +544,7 @@ const exp = (function() {
 
 
         if (play == "play") {
-            this.timeline = [spin_loop, flowMeasure_play];
+            this.timeline = [preSpin, spin_loop, flowMeasure_play];
         } else {
             this.timeline = [flowMeasure_predict];
         };
@@ -536,7 +634,7 @@ const exp = (function() {
     p.save_data = {
         type: jsPsychPipe,
         action: "save",
-        experiment_id: "X3VBu7dQfWnz",
+        experiment_id: "6NPKefSkFuj2",
         filename: filename,
         data_string: ()=>jsPsych.data.get().csv()
     };

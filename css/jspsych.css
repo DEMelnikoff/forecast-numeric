@@ -556,7 +556,7 @@
 }
 
 /* spinner styling */
-#spin {
+#spinUp {
   font: 1rem/0 sans-serif;
   user-select: none;
  /* cursor: pointer; */
@@ -564,25 +564,54 @@
   justify-content: center;
   align-items: center;
   position: absolute;
-  top: 58%;
+  top: 50%;
   left: 50%;
-  width: 16%;
-  height: 8%;
-  margin: -8%;
+  width: 14%;
+  height: 14%;
+  margin: -7%;
   color: white;
   background: white;
-  box-shadow: 0 0 0 8px currentColor, 0 0px 15px 5px rgba(0, 0, 0, 0.6);
+  box-shadow: 0 0 0 4px white, 0 0px 15px 5px rgba(0, 0, 0, 0.6);
   border-radius: 10%;
-  transition: 0.8s;
+  font-weight: bold;
+  font-size: 1.4rem;  /* Adjust as needed */
 }
 
-#spin::after {
+
+.pointUp::after {
   content: '';
   position: absolute;
-  top: -48px;
-  border: 48px solid transparent;
-  border-bottom-color: currentColor;
+  top: -35px;
+  border: 35px solid transparent;
+  border-bottom-color: white;
   border-top: none;
+}
+
+.pointDown::after {
+  content: '';
+  position: absolute;
+  top: 66px;
+  border: 35px solid transparent;
+  border-top-color: white;
+  border-bottom: none;
+}
+
+.pointLeft::after {
+  content: '';
+  position: absolute;
+  left: -35px;
+  border: 35px solid transparent;
+  border-right-color: white;
+  border-left: none;
+}
+
+.pointRight::after {
+  content: '';
+  position: absolute;
+  left: 66px;
+  border: 35px solid transparent;
+  border-left-color: white;
+  border-right: none;
 }
 
 .parent {
@@ -749,4 +778,5 @@
 .stats-table td {
   padding: 30px 30px;
 }
+
 
