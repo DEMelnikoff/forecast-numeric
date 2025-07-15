@@ -124,8 +124,8 @@ var jsPsychCanvasButtonResponse = (function (jspsych) {
               this.jsPsych.pluginAPI.clearAllTimeouts();
               // gather the data to store for the trial
               var trial_data = {
-                  outcomes_wedges: spinnerData.outcomes_wedges,
-                  outcomes_points: spinnerData.outcomes_points,
+                  outcomes_wedges: spinnerData.outcomes_wedges[0],
+                  outcomes_points: spinnerData.outcomes_points[0],
                   score: spinnerData.score,
                   rt: spinnerData.rt,
               };

@@ -226,8 +226,8 @@ var jsPsychCanvasLikert = (function (jspsych) {
                   rt: response_time,
                   response: question_data,
                   question_order: question_order,
-                  outcomes_wedges: spinnerData.outcomes_wedges,
-                  outcomes_points: spinnerData.outcomes_points,
+                  outcomes_wedges: spinnerData.outcomes_wedges[0],
+                  outcomes_points: spinnerData.outcomes_points[0],
                   score: spinnerData.score,
                   rt: spinnerData.rt,
               };
