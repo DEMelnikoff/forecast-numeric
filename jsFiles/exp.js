@@ -493,7 +493,7 @@ const exp = (function() {
             type: jsPsychCanvasLikert,
             stimulus: function(c, spinnerData) {
                 let sectors = pointsToWedges(jsPsych.timelineVariable('values'))
-                let reliability_idx = reliability_idxs[round-1];
+                reliability_idx = reliability_idxs[round-1];
                 createSpinner(c, spinnerData, sectors, reliability[reliability_idx], false);
             },
             reliability: () => {
