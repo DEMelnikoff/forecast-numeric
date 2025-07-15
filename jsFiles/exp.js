@@ -133,7 +133,7 @@ const exp = (function() {
                 <table class="stats-table">
                     <tr>
                         <td style="color:#4363D8">3<br><br>(x1)</td>
-                        <td style="color:#911EB4">9<br><br>(x5)</td> hh
+                        <td style="color:#911EB4">9<br><br>(x5)</td>
                     </tr>
                 </table>
                 <p>So, this description refers to a wheel with:</p>
