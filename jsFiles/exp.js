@@ -9,7 +9,7 @@ const exp = (function() {
 
     // const playOrPredict = ["play", "predict"][0]; 
 
-    const nTrials = 12;
+    const nTrials = 5;
 
     jsPsych.data.addProperties({
         playOrPredict: playOrPredict,
@@ -112,9 +112,51 @@ const exp = (function() {
 
             `<div class='parent'>
                 <p>Your goal in Feel the Spin is to guess how <b>immersed</b> and <b>absorbed</b> an average person would feel while spinning different wheels.</p>
-                <p>You'll see a variety of wheels, each with its own set of values. For each wheel, your job is to guess how <b>immersed</b> and <b>absorbed</b> an average person would feel while spinning it.</p>
+                <p>You'll see descriptions of different wheels. For each description, your job is to guess how <b>immersed</b> and <b>absorbed</b> an average person would feel while spinning the corresponding wheel.</p>
                 <p>Simply provide your best guess about the typical experience.</p>
             </div>`,   
+
+            `<div class='parent'>
+                <p>Each description looks like this:</p>
+                <table class="stats-table">
+                    <tr>
+                        <td style="color:#4363D8">3<br><br>(x1)</td>
+                        <td style="color:#911EB4">9<br><br>(x5)</td>
+                    </tr>
+                </table>
+            </div>`,   
+
+            `<div class='parent'>
+                <table class="stats-table">
+                    <tr>
+                        <td style="color:#4363D8">3<br><br>(x1)</td>
+                        <td style="color:#911EB4">9<br><br>(x5)</td>
+                    </tr>
+                </table>
+                <p>This description refers to a wheel with:</p>
+                <p>1 blue wedge worth 3 points</br>5 purple wedges worth 9 points</p>
+                <img src="./img/example1.png" style="width:40%; height:40%">
+            </div>`,   
+
+            `<div class='parent'>
+                <p>Here's another example:</p>
+                <table class="stats-table">
+                    <tr>
+                        <td style="color:#E6194B">3<br><br>(x3)</td>
+                        <td style="color:#F58231">5<br><br>(x1)</td>
+                        <td style="color:#3CB44B">7<br><br>(x1)</td>
+                        <td style="color:#4363D8">9<br><br>(x1)</td>
+                    </tr>
+                </table>
+                <p>This description refers to a wheel with:</p> 
+                <p>3 red wedges worth 3 points<br>1 orange wedge with 5 points<br>1 green wedge worth 7 points<br>1 blue wedge worth 9 points:</p>
+                <img src="./img/example2.png" style="width:40%; height:40%">
+            </div>`,
+
+            `<div class='parent'>
+                <p>REMEMBER: For each description, your job is to guess how <b>immersed</b> and <b>absorbed</b> an average person would feel while spinning the corresponding wheel.</p>
+                <p>Simply provide your best guess about the typical experience.</p>
+            </div>`,  
         ],
 
         postIntro: [   
@@ -241,6 +283,27 @@ const exp = (function() {
         nine: {color: null, font: 'white', label:"9", points: 9},
     };
 
+    const randomizeWedgeColors = () => {
+      vibrantColors = jsPsych.randomization.repeat(vibrantColors, 1);
+      Object.keys(wedges).forEach((key, idx) => { wedges[key].color = vibrantColors[idx] });
+      return wedges;
+    };
+    
+    randomizeWedgeColors();
+
+    const buildStatsTable = (nums, probs, wedges) => {
+      const colors = Object.values(wedges).map(w => w.color);
+
+      // Build the <td> cells
+      const tds = nums.map((num, i) => `<td style="color:${colors[i]}">${num}<br><br>(x${probs[i]})</td>`).join("");
+
+      // Wrap everything in <table> … </table>
+      return `
+        <table class="stats-table">
+          <tr>${tds}</tr>
+        </table>`;
+    };
+
     // define each wheel
     let target_wheels = [
 
@@ -288,10 +351,7 @@ const exp = (function() {
 
     ];
 
-    target_wheels = jsPsych.randomization.repeat(target_wheels, 1);
-
-
-    const MakeSpinLoop = function(wheel, round, play) {
+    const MakeSpinLoop = function(play) {
 
         let outcome;
         let trial = 1;
@@ -300,23 +360,14 @@ const exp = (function() {
         const spin = {
             type: jsPsychCanvasButtonResponse,
             stimulus: function(c, spinnerData) {
-                if (trial == 1) {
-                    wedges.win.color = vibrantColors.pop();
-                    wedges.lose.color = vibrantColors.pop();
-                }
-                if (round > 0 & trial == 1) {
-                    wedges.lose.label = "10";
-                    wedges.lose.points = 10;
-                    wedges.win.label = "15";
-                    wedges.win.points = 15;
-                };
-                createSpinner(c, spinnerData, wheel.sectors, false, true);
+                console.log(jsPsych.timelineVariable('nums'), jsPsych.timelineVariable('probs'), jsPsych.timelineVariable('ev'), jsPsych.timelineVariable('mi'))
+                createSpinner(c, spinnerData, jsPsych.timelineVariable('sectors'), false, true);
             },
             canvas_size: [500, 500],
             scoreBoard: function() {
                 return '';
             },
-            data: {round: round + 1, wheel_id: wheel.wheel_id, ev: wheel.ev, reliability: wheel.reliability, mi: wheel.mi},
+            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
             on_finish: function(data) {
                 data.trial = trial;
                 outcome = data.outcome;
@@ -328,18 +379,14 @@ const exp = (function() {
             stimulus: function() {
                 let standardFeedback;
 
-                if (outcome == "9" || outcome == "15") {
-                    standardFeedback = `<div class="score-board-blank"></div> <div class="feedback-area"> <div class="win-text" style="color:${wedges.win.color}">+${outcome} Points</div>`;
-                } else {
-                    standardFeedback = `<div class="score-board-blank"></div> <div class="feedback-area"> <div class="win-text" style="color:${wedges.lose.color}">+${outcome} Points</div>`;
-                };
+                standardFeedback = `<div class="score-board-blank"></div> <div class="feedback-area"> <div class="win-text" style="color:${vibrantColors[outcome-3]}">+${outcome} Points</div>`;
 
                 return standardFeedback;
 
             },
             choices: "NO_KEYS",
             trial_duration: 2000,
-            data: {round: round + 1, wheel_id: wheel.wheel_id, ev: wheel.ev, reliability: wheel.reliability, mi: wheel.mi},
+            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
             on_finish: function(data) {
                 data.trial = trial;
                 trial++;
@@ -354,15 +401,7 @@ const exp = (function() {
         const flowMeasure_predict = {
             type: jsPsychSurveyLikert,
             preamble: () => {
-                wedges.win.color = vibrantColors.pop();
-                wedges.lose.color = vibrantColors.pop();
-                let wheelStats = 
-                `<table class="stats-table">
-                    <tr>
-                        <td style="color: ${wedges.win.color}">${wheel.nums[0]}<br><br>(x${wheel.probs[0]})</td>
-                        <td style="color: ${wedges.lose.color}">${wheel.nums[1]}<br><br>(x${wheel.probs[1]})</td>
-                    </tr>
-                </table>`
+                let wheelStats = buildStatsTable(jsPsych.timelineVariable('nums'), jsPsych.timelineVariable('probs'), wedges)
                 return wheelStats;
             },
             questions: [
@@ -372,10 +411,11 @@ const exp = (function() {
             ],
             randomize_question_order: false,
             scale_width: 600,
-            data: {round: round + 1, wheel_id: wheel.wheel_id, ev: wheel.ev, reliability: wheel.reliability, mi: wheel.mi},
+            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
              on_finish: function(data) {
                 data.trial = trial - 1;
                 saveSurveyData(data);
+                randomizeWedgeColors();
             }
         };
 
@@ -388,10 +428,11 @@ const exp = (function() {
             ],
             randomize_question_order: false,
             scale_width: 600,
-            data: {round: round + 1, wheel_id: wheel.wheel_id, ev: wheel.ev, reliability: wheel.reliability, mi: wheel.mi},
+            data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
              on_finish: function(data) {
                 data.trial = trial - 1;
                 saveSurveyData(data);
+                randomizeWedgeColors();
             }
         };
 
@@ -401,13 +442,14 @@ const exp = (function() {
         } else {
             this.timeline = [flowMeasure_predict];
         };
+        this.timeline_variables = target_wheels;
+        this.randomize_order = true;
+        this.sample = {type: 'without-replacement', size: 16}
     }
 
 
-    p.round1 = new MakeSpinLoop(baseline_wheels[0], 0, playOrPredict)
-    p.round2 = new MakeSpinLoop(target_wheels[0], 1, playOrPredict)
-    p.round3 = new MakeSpinLoop(target_wheels[1], 2, playOrPredict)
-    p.round4 = new MakeSpinLoop(target_wheels[2], 3, playOrPredict)
+    p.wheel_loop = new MakeSpinLoop(playOrPredict)
+
 
    /*
     *
@@ -486,7 +528,7 @@ const exp = (function() {
     p.save_data = {
         type: jsPsychPipe,
         action: "save",
-        experiment_id: "zQNHCUVS8KeZ",
+        experiment_id: "X3VBu7dQfWnz",
         filename: filename,
         data_string: ()=>jsPsych.data.get().csv()
     };
@@ -495,6 +537,6 @@ const exp = (function() {
 
 }());
 
-const timeline = [exp.round1, exp.consent, exp.instLoop, exp.postIntro, exp.round1, exp.round2, exp.round3, exp.round4, exp.demographics, exp.save_data];
+const timeline = [exp.consent, exp.instLoop, exp.postIntro, exp.wheel_loop, exp.demographics, exp.save_data];
 
 jsPsych.run(timeline);
