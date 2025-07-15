@@ -9,7 +9,7 @@ const exp = (function() {
 
     // const playOrPredict = ["play", "predict"][0]; 
 
-    const nTrials = 50;
+    const nTrials = 5;
 
     jsPsych.data.addProperties({
         playOrPredict: playOrPredict,
