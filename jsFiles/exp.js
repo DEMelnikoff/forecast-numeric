@@ -458,7 +458,7 @@ const exp = (function() {
             on_finish: function(data) {
                 data.trial = trial;
                 data.round = round;
-                outcome = data.outcomes_points[0];
+                outcome = data.outcomes_points;
                 data.reliability_idx = reliability_idx;
                 data.reliability = reliability[reliability_idx];
             }
