@@ -186,7 +186,10 @@ var jsPsychCanvasLikert = (function (jspsych) {
 
           // store data
           let spinnerData = {
-            outcome: null,
+            outcomes_wedges: [],
+            outcomes_points: [],
+            score: 0,
+            rt: null,          
           };
           
           trial.stimulus(c, spinnerData);
@@ -223,7 +226,10 @@ var jsPsychCanvasLikert = (function (jspsych) {
                   rt: response_time,
                   response: question_data,
                   question_order: question_order,
-                  outcome: spinnerData.outcome,
+                  outcomes_wedges: spinnerData.outcomes_wedges,
+                  outcomes_points: spinnerData.outcomes_points,
+                  score: spinnerData.score,
+                  rt: spinnerData.rt,
               };
               display_element.innerHTML = "";
               // next trial
