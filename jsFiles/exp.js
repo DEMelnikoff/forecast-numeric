@@ -124,8 +124,8 @@ const exp = (function() {
                         <td style="color:#911EB4">9<br><br>(x5)</td>
                     </tr>
                 </table>
-                <p>The upper numbers (3 and 9) are the values on the corresponding wheel.<br>
-                The lower numbers (x1 and x5) are the number of times each value appears.<br>
+                <p>The top numbers (3 and 9) are the values on the corresponding wheel.<br>
+                The bottom numbers (1 and 5) are the number of times each value appears.<br>
                 Each value appears in its corresponding color.</p>
             </div>`,   
 
@@ -133,7 +133,7 @@ const exp = (function() {
                 <table class="stats-table">
                     <tr>
                         <td style="color:#4363D8">3<br><br>(x1)</td>
-                        <td style="color:#911EB4">9<br><br>(x5)</td>
+                        <td style="color:#911EB4">9<br><br>(x5)</td> hh
                     </tr>
                 </table>
                 <p>So, this description refers to a wheel with:</p>
@@ -142,7 +142,6 @@ const exp = (function() {
             </div>`,   
 
             `<div class='parent'>
-                <p>Here's another example:</p>
                 <table class="stats-table">
                     <tr>
                         <td style="color:#E6194B">3<br><br>(x3)</td>
@@ -152,7 +151,7 @@ const exp = (function() {
                     </tr>
                 </table>
                 <p>This description refers to a wheel with:</p> 
-                <p>3 red wedges worth 3 points<br>1 orange wedge with 5 points<br>1 green wedge worth 7 points<br>1 blue wedge worth 9 points:</p>
+                <p>3 red wedges worth 3 points<br>1 orange wedge with 5 points<br>1 green wedge worth 7 points<br>1 blue wedge worth 9 points</p>
                 <img src="./img/example2.png" style="width:40%; height:40%">
             </div>`,
 
