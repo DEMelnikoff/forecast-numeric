@@ -45,7 +45,7 @@ const exp = (function() {
 
             `<div class='parent'>
                 <p>The number on the activated wedge determines your earnings.</p>
-                <p>In this example, you'd gain 3 tokens.</p>
+                <p>In this example, you'd earn 3 tokens.</p>
                 <img src="./img/standard-outcome.png" style="width:50%; height:50%">
             </div>`,
 
@@ -138,7 +138,7 @@ const exp = (function() {
 
             `<div class='parent'>
                 <p>The number on the activated wedge determines the player's earnings.</p>
-                <p>In this example, the player earned 3 tokens.</p>
+                <p>In this example, the player would earn 3 tokens.</p>
                 <img src="./img/standard-outcome.png" style="width:50%; height:50%">
             </div>`,
 
