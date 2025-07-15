@@ -357,6 +357,7 @@ const exp = (function() {
 
         let outcome;
         let trial = 1;
+        let round = 1;
 
         // trial: spinner
         const spin = {
@@ -372,6 +373,7 @@ const exp = (function() {
             data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
             on_finish: function(data) {
                 data.trial = trial;
+                data.round = round;
                 outcome = data.outcome;
             }
         };
@@ -389,6 +391,7 @@ const exp = (function() {
             data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
             on_finish: function(data) {
                 data.trial = trial;
+                data.round = round;
                 trial++;
             },
         };
@@ -413,7 +416,10 @@ const exp = (function() {
             scale_width: 600,
             data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
              on_finish: function(data) {
-                data.trial = trial - 1;
+                data.trial = trial;
+                data.round = round;
+                trial++;
+                round++;
                 saveSurveyData(data);
                 randomizeWedgeColors();
             }
@@ -431,6 +437,8 @@ const exp = (function() {
             data: {wheel_id: jsPsych.timelineVariable('wheel_id'), ev: jsPsych.timelineVariable('ev'), mi: jsPsych.timelineVariable('mi'), nums: jsPsych.timelineVariable('nums'), probs: jsPsych.timelineVariable('probs')},
              on_finish: function(data) {
                 data.trial = trial - 1;
+                data.round = round;
+                round++;
                 saveSurveyData(data);
                 randomizeWedgeColors();
             }
