@@ -182,7 +182,7 @@ const createSpinner = function(canvas, spinnerData, sectors, reliability, intera
       if (Math.abs(speed) >= angVelMax) { isAccelerating = false };
 
       let liveSector = sectors[getIndex(oldAngle)];
-      liveSectorLabel = liveSector.label;
+      //liveSectorLabel = liveSector.label;
       oldAngle_corrected = (oldAngle < 0) ? 360 + (oldAngle % 360) : oldAngle % 360;
 
 
