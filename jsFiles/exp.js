@@ -5,9 +5,21 @@ const exp = (function() {
 
     var p = {};
 
-    const playOrPredict = ["play", "predict"][Math.floor(Math.random() * 2)]; 
+    let pid = jsPsych.data.getURLVariable("PROLIFIC_PID");
 
-    // const playOrPredict = ["play", "predict"][0]; 
+    function hashPID(pid) {
+      let hash = 0;
+      for (let i = 0; i < pid.length; i++) {
+        hash = (hash << 5) - hash + pid.charCodeAt(i);
+        hash = hash & hash; // Convert to 32bit integer
+      }
+      return Math.abs(hash);
+    };
+
+    const assignments = ['play', 'predict'];
+    const index = hashPID(pid) % assignments.length;
+
+    const playOrPredict = assignments[index];
 
     const nTrials = 5;
 
