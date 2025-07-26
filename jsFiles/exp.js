@@ -439,7 +439,7 @@ const exp = (function() {
                 return html;
             },
             choices: "NO_KEYS",
-            trial_duration: 5000,
+            trial_duration: 3000,
             response_ends_trial: false,
             data: {wheel_id: jsPsych.timelineVariable('wheel_id'), values: jsPsych.timelineVariable('values'), ev: jsPsych.timelineVariable('ev'), hE: jsPsych.timelineVariable('hE')},
             on_finish: function(data) {
