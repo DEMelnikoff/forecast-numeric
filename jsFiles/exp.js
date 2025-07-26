@@ -121,8 +121,7 @@ const exp = (function() {
             </div>`,
 
             `<div class='parent'>
-                <p>Throughout Feel the Spin, you'll answer questions about your feelings.</p>
-                <p>Specifically, after each wheel, you'll report how <b>immersed</b> and <b>absorbed</b> you felt in what you were doing.</p>
+                <p>Throughout Feel the Spin, you'll answer questions about your feelings. Specifically, after each wheel, you'll report how <b>immersed</b> and <b>absorbed</b> you felt in what you were doing.</p>
                 <p><b>IMPORTANT:</b> You will <i>not</i> rate how much you liked or enjoyed spinning each wheel. The focus is solely on your sense of immersion and absorption.</p>
             </div>`,
         ],
@@ -213,8 +212,7 @@ const exp = (function() {
             </div>`,
 
             `<div class='parent'>
-                <p>Throughout Feel the Spin, players answer questions about their feelings.</p>
-                <p>Specifically, after each wheel, players report how <b>immersed</b> and <b>absorbed</b> they felt in what they were doing.</p>
+                <p>Throughout Feel the Spin, players answer questions about their feelings. Specifically, after each wheel, players report how <b>immersed</b> and <b>absorbed</b> they felt in what they were doing.</p>
                 <p><b>IMPORTANT:</b> Players do <i>not</i> rate how much they liked or enjoyed spinning each wheel. The focus is solely on their sense of immersion and absorption.</p>
             </div>`,
 
@@ -249,23 +247,23 @@ const exp = (function() {
         allow_keys: false,
     };
 
-    const correctAnswer_play = [`I will report how immersed and absorbed I felt spinning each wheel.`];
+    const correctAnswer_play = [`I will report how immersed and absorbed I felt in what I was doing.`];
 
-    const correctAnswer_predict = [`I will predict how immersed and absorbed an average person would feel spinning each wheel.`];
+    const correctAnswer_predict = [`I will predict how immersed and absorbed an average person would feel in what they were doing.`];
 
     const correctAnswer = (playOrPredict == "play") ? correctAnswer_play : correctAnswer_predict;
 
     const options_play = [
         `I will report how happy I felt spinning each wheel.`, 
         `I will report how much I enjoyed spinning each wheel.`,
-        `I will report how immersed and absorbed I felt spinning each wheel.`,
+        `I will report how immersed and absorbed I felt in what I was doing.`,
         `I will report how much I liked spinning each wheel.`
     ];
 
     const options_predict = [
         `I will predict how happy an average person would feel spinning each wheel.`, 
         `I will predict how much an average person would enjoy spinning each wheel.`,
-        `I will predict how immersed and absorbed an average person would feel spinning each wheel.`,
+        `I will predict how immersed and absorbed an average person would feel in what they were doing.`,
         `I will predict how much an average person would like spinning each wheel.`];
 
     const options = (playOrPredict == "play") ? options_play : options_predict;
