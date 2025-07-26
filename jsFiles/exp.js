@@ -38,13 +38,12 @@ const exp = (function() {
         intro_play: [
             `<div class='parent'>
                 <p><strong>Welcome to Feel the Spin!</strong></p>
-                <p>In Feel the Spin, you'll compete for a chance to win a <b>$100.00 bonus</b>.
-                Specifically, you'll earn tokens. Your tokens will be entered into a lottery, and if one of your tokens is drawn, you'll win $100.00.</p>
-                <p>The more tokens you earn, the greater your chances of winning $100.00.</p>
+                <p>In Feel the Spin, you'll spin a series of prize wheels.</p>
+                <p>With each spin, you'll earn points.</p>
+                <p>Your goal is to earn as many points as possible!</p>
             </div>`,
 
             `<div class='parent'>
-                <p>You'll earn tokens by spinning prize wheels.</p>
                 <p>Each wheel is divided into 6 wedges, like this:</p>
                 <img src="./img/arrow-up.png" style="width:50%; height:50%">
             </div>`,
@@ -57,14 +56,14 @@ const exp = (function() {
 
             `<div class='parent'>
                 <p>The number on the activated wedge determines your earnings.</p>
-                <p>In this example, you'd earn 3 tokens.</p>
+                <p>In this example, you'd earn 3 points.</p>
                 <img src="./img/standard-outcome.png" style="width:50%; height:50%">
             </div>`,
 
             `<div class='parent'>
-                <p>After each spin, you'll see how many tokens you earned.</p>
+                <p>After each spin, you'll see how many points you earned.</p>
                 <p>Specifically, you'll see a message like this:</p>
-                <div class="win-text-inst" style="color:#3CB44B; margin-bottom: 100px">+3 Tokens</div>
+                <div class="win-text-inst" style="color:#3CB44B; margin-bottom: 100px">+3 Points</div>
             </div>`,
 
             `<div class='parent'>
@@ -131,13 +130,12 @@ const exp = (function() {
         intro_predict: [
             `<div class='parent'>
                 <p><strong>Welcome to Feel the Spin!</strong></p>
-                <p>In Feel the Spin, players compete for a chance to win a <b>$100.00 bonus</b>.
-                Specifically, players earn tokens. Their tokens are entered into a lottery, and the player whose token is drawn wins $100.00.</p>
-                <p>The more tokens a player earns, the greater their chances of winning $100.00.</p>
+                <p>In Feel the Spin, players spin a series of prize wheels.</p>
+                <p>With each spin, players earn points.</p>
+                <p>The goal is to earn as many points as possible!</p>
             </div>`,
 
             `<div class='parent'>
-                <p>Players earn tokens by spinning prize wheels.</p>
                 <p>Each wheel is divided into 6 wedges, like this:</p>
                 <img src="./img/arrow-up.png" style="width:50%; height:50%">
             </div>`,
@@ -150,7 +148,7 @@ const exp = (function() {
 
             `<div class='parent'>
                 <p>The number on the activated wedge determines the player's earnings.</p>
-                <p>In this example, the player would earn 3 tokens.</p>
+                <p>In this example, the player would earn 3 points.</p>
                 <img src="./img/standard-outcome.png" style="width:50%; height:50%">
             </div>`,
 
@@ -162,9 +160,9 @@ const exp = (function() {
             </div>`,
 
             `<div class='parent'>
-                <p>After each spin, the player sees how many tokens they earned.</p>
+                <p>After each spin, the player sees how many points they earned.</p>
                 <p>Specifically, they see a message like this:</p>
-                <div class="win-text-inst" style="color:#3CB44B; margin-bottom: 100px">+3 Tokens</div>
+                <div class="win-text-inst" style="color:#3CB44B; margin-bottom: 100px">+3 Points</div>
             </div>`,
 
             `<div class='parent'>
@@ -480,7 +478,7 @@ const exp = (function() {
             type: jsPsychHtmlKeyboardResponse,
             stimulus: function() {
                 let standardFeedback;
-                standardFeedback = `<div class="score-board-blank"></div> <div class="feedback-area"> <div class="win-text" style="color:${vibrantColors[outcome-3]}">+${outcome} Tokens</div>`;
+                standardFeedback = `<div class="score-board-blank"></div> <div class="feedback-area"> <div class="win-text" style="color:${vibrantColors[outcome-3]}">+${outcome} Points</div>`;
                 return standardFeedback;
 
             },
